@@ -1,20 +1,24 @@
+import React,{useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import AppNavigation from './navigation/AppNavigation';
+import Welcome from './pages/Welcome';
+import Intro from './pages/Intro';
+
 
 export default function App() {
+
+  const [isLoaded,setIsLoaded] = useState(false);
+
+  setTimeout(()=>{
+    setIsLoaded(true);
+  },1000);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    isLoaded ? <AppNavigation/> : <Intro/>
+    // <AppNavigation/>
+      
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
